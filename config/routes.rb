@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'register/user' => 'users#new', as: 'register_user'
+  post 'users' => 'users#create'
+
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -21,8 +24,8 @@ Rails.application.routes.draw do
   get 'pets/update'
   get 'pets/destroy'
   get 'pets/index'
-  get 'users/new'
-  get 'users/create'
+  # get 'users/new'
+  # get 'users/create'
   get 'users/edit'
   get 'users/update'
   get 'users/destroy'
