@@ -10,4 +10,13 @@ class Location < ApplicationRecord
   def countries
     Country.all.map{|c|c.name}
   end
+
+  def self.make(params_hash)
+    location = self.new(params_hash)
+    if location.valid?
+      location.save
+    end
+    location
+  end
+
 end

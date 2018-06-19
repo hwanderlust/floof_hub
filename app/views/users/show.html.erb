@@ -1,2 +1,19 @@
-<h1>Users#create</h1>
-<p>Find me in app/views/users/create.html.erb</p>
+<h1><%= @user.name %></h1>
+<p>Address:</p>
+<p><%= @user.location.street_address %></p>
+<p><%= @user.location.city %></p>
+<p><%= @user.location.state %></p>
+<p>Dwelling Type: <%= @user.dwelling_type%></p>
+<br>
+<p>Age: <%= @user.age %></p>
+<p>Kids:
+  <% if @user.age == true %>
+  <%= "Yes" %>
+  <% else %>
+  <%= "None" %>
+  <% end %>
+</p>
+
+<p>Household Members: <%= @user.household_members %></p>
+<p>Bio: <%= @user.bio %></p>
+<p>Email: <%= @user.email_address %></p>

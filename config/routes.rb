@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'register/user' => 'users#new', as: 'register_user'
   post 'users' => 'users#create'
-
+  get 'users/:id' => 'users#show', as: 'user'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'

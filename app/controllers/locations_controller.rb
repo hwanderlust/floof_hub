@@ -19,4 +19,9 @@ class LocationsController < ApplicationController
 
   def show
   end
+
+  private
+  def location_params
+    params.require(:location).permit(:street_address, :city, :state, :country)
+  end
 end
