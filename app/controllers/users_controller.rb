@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :destroy, :update]
-<<<<<<< HEAD
   before_action :require_login, only: [:edit, :update, :destroy, :show]
-=======
-  before_action :require_login, only: [:edit, :update, :destroy]
->>>>>>> master
 
   def new
     @user = User.new
