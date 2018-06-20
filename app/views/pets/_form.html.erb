@@ -6,15 +6,28 @@
     <%= f.number_field :age %>
     <br>
     <%= f.label :gender %>
-    <%= f.text_field :gender %>
-    <br>
-    <%= f.label :household_members %>
-    <%= f.number_field :household_members %>
+    Male <%= f.radio_button(:gender, "M", :checked => (@pet.gender == "M")) %>
+    Female <%= f.radio_button(:gender, "F", :checked => (@pet.gender == "F")) %>
     <br>
     <%= f.label :bio %>
     <%= f.text_area :bio %>
-    <%= f.label :kids, "Kids at home? " %>
-    Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
-    N/A <%= f.radio_button(:kids, false, :checked => (:kids == false)) %>
     <br>
-  <br>
+    <%= f.label :pet_type %>
+    <%= f.text_field :pet_type %>
+    <br>
+    <%= f.label :breed %>
+    <%= f.text_field :breed %>
+    <br>
+    <%= f.label :temperament %>
+    <%= f.text_field :temperament %>
+    <br>
+    <%= f.label :single_pet, "Loner pet?" %>
+    Yes <%= f.radio_button(:single_pet, true, :checked => (@pet.single_pet == true)) %>
+    No <%= f.radio_button(:single_pet, false, :checked => (@pet.single_pet == false)) %>
+    <br>
+    <%= f.label :family_friendly %>
+    Yes <%= f.radio_button(:family_friendly, true, :checked => (@pet.family_friendly == true)) %>
+    No <%= f.radio_button(:family_friendly, false, :checked => (@pet.family_friendly == false)) %>
+    <br>
+    <%= f.submit %>
+<% end %>

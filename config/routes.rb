@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'edit-pet-details' => 'pets#edit', as: 'edit_pet'
   patch 'pets/update'
   delete 'pets/destroy'
-  get 'all-pets' => 'pets/index', as: 'pets'
+  get 'all-pets' => 'pets#index', as: 'pets'
 
 
 
