@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   patch 'shelters/:id' => 'shelters#update'
 
   get 'list-pet' => 'pets#new', as: 'list_pet'
-  post 'pets/create'
-  get 'edit-pet-details' => 'pets#edit', as: 'edit_pet'
-  patch 'pets/update'
-  delete 'pets/destroy'
   get 'all-pets' => 'pets#index', as: 'pets'
+  post 'all-pets' => 'pets#create'
+  get 'pets/:id' => 'pets#show', as: 'pet'
+  get 'pets/:id/edit' => 'pets#edit', as: 'edit_pet'
+  patch 'pets/:id' => 'pets#update'
+  delete 'pets/destroy'
 
 
 
