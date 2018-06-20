@@ -13,9 +13,11 @@
   <%= label_tag "Biography" %>
   <%= text_area_tag "user[bio]", @user.bio %>
   <%= label_tag "Kids" %>
-  <%= check_box_tag "user[kids]" %>
+  <input id="user[kids]" type="checkbox" name="user[kids]" value="<%= @user.kids %>" <%="checked" if @user.kids == true %>></input>
   <%= label_tag "Shelter Employee" %>
-  <%= check_box_tag "user[shelter_employee]"%>
+  <%= "Yes " %><%= radio_button_tag "user[shelter_employee]", "true", checked: @t %>
+  <%= "No " %><%= radio_button_tag "user[shelter_employee]", "false", checked: @f %>
+
   <%= label_tag "Email Address" %>
   <%= text_field_tag "user[email_address]", @user.email_address %>
   <%= label_tag "Password" %>

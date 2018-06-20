@@ -23,6 +23,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    byebug
+    @t, @f = false
+    if @user.shelter_employee == true
+      @t = true
+    elsif @user.shelter_employee == false
+      @f = false
+    end 
     @user.update(user_params)
     @user.build_location = location_params
     if @user.valid?

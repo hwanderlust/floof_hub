@@ -13,4 +13,8 @@ class User < ApplicationRecord
     self.location = new_location
   end
 
+  # def update_location=(params)
+  #   old_location = self.location
+  # end
+
 end
