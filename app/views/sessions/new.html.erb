@@ -1,8 +1,8 @@
 <h1>Login to Adopt Today!</h1>
 
-<%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<%= form_for :sessions, url: '/login' do |f| %>
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address %>
     <br>
     <%= f.label :password %>
     <%= f.password_field :password %>

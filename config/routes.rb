@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   patch 'users/:id' => 'users#update'
   delete 'users/destroy'
 
-
-  get 'login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
+  get 'login' => 'sessions#new', as: 'login'
+  post 'login' => 'sessions#create'
+  get 'logout' => 'sessions#destroy', as: 'logout'
 
   get 'locations/index'
   get 'locations/show'
