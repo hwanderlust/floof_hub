@@ -1,4 +1,6 @@
-<%= form_for setup_user(@user) do |f| %>
+<%= form_for setup_user(@user), html: {multipart: true} do |f| %>
+    <%= f.file_field :avatar %>
+    <br><br>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br>

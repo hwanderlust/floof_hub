@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
-      :bio, :kids, :email_address, :password, :shelter_employee)
+      :bio, :kids, :email_address, :password, :shelter_employee, :avatar)
     end
 
 end

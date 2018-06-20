@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_154155) do
+ActiveRecord::Schema.define(version: 2018_06_20_181533) do
 
   create_table "locations", force: :cascade do |t|
     t.string "country"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 2018_06_19_154155) do
     t.boolean "shelter_employee", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

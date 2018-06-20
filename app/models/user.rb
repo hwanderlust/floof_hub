@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :pets
   has_many :shelters, through: :pets
   accepts_nested_attributes_for :location
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def build_location=(params)
     new_location = Location.new(params)

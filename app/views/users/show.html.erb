@@ -1,4 +1,7 @@
 <h1><%= @user.name %></h1>
+
+<%= image_tag @user.avatar.url(:thumb) %>
+
 <p>Address:</p>
 <p><%= @user.location.street_address %></p>
 <p><%= @user.location.city %></p>
