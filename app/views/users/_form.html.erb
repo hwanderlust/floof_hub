@@ -15,6 +15,14 @@
     <br>
     <%= f.label :bio %>
     <%= f.text_area :bio %>
+    <br>
+    <%= f.label :kids %>
+    <%= f.radio_button(:kids, true, :checked => (@user.kids == true)) %>
+    <%= f.radio_button(:kids, false, :checked => (@user.kids == false)) %>
+    <br>
+    <%= f.label :shelter_employee %>
+    <%= f.radio_button(:shelter_employee, true, :checked => (@user.shelter_employee == true)) %>
+    <%= f.radio_button(:shelter_employee, false, :checked => (@user.shelter_employee == false)) %>
   <br>
     <%= f.label :kids, "Kids at home? " %>
     Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
