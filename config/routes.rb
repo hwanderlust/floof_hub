@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   delete 'users/destroy'
 
 
-  get 'sessions/new'
-  post 'sessions/create'
-  delete 'sessions/destroy'
+  get 'login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 
   get 'locations/index'
   get 'locations/show'

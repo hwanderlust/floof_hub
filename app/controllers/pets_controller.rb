@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  
   def new
   end
 
@@ -15,5 +17,8 @@ class PetsController < ApplicationController
   end
 
   def index
+  end
+
+  def show
   end
 end
