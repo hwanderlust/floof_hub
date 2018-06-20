@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get 'locations/index'
   get 'locations/show'
 
-  get 'shelters/index' => 'shelters#index', as: 'shelters'
+  get 'shelters' => 'shelters#index', as: 'shelters'
+  post 'shelters' => 'shelters#create'
   get 'shelters/register' => 'shelters#new', as: 'register_shelter'
-  post 'shelters/home' => 'shelters#create'
   get 'shelters/:id' => 'shelters#show', as: 'shelter'
   get 'shelters/:id/edit' => 'shelters#edit'
   patch 'shelters/:id' => 'shelters#update'

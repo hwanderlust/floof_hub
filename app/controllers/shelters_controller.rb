@@ -7,7 +7,6 @@ class SheltersController < ApplicationController
   end
 
   def create
-
     @shelter = Shelter.new(shelter_params)
     @shelter.build_location = location_params[:locations]
     if @shelter.valid?
