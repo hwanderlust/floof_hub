@@ -26,3 +26,6 @@
 <p>Household Members: <%= @user.household_members %></p>
 <p>Bio: <%= @user.bio %></p>
 <p>Email: <%= @user.email_address %></p>
+
+<br><br>
+<%= link_to "Edit Profile", edit_user_path(@user) %>

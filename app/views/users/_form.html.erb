@@ -5,13 +5,13 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :age %>
-    <%= f.number_field :age %>
+    <%= f.number_field :age, min: 16, max: 122 %>
     <br>
     <%= f.label :dwelling_type %>
     <%= f.text_field :dwelling_type %>
     <br>
     <%= f.label :household_members %>
-    <%= f.number_field :household_members %>
+    <%= f.number_field :household_members, min: 1 %>
     <br>
     <%= f.label :bio %>
     <%= f.text_area :bio %>
