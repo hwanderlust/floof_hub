@@ -21,7 +21,13 @@ class PetsController < ApplicationController
 
   def update
     @pet.update(pet_params)
-    redirect_to pet_path(@pet)
+    if @pet.valid?
+      @pet.save
+      redirect_to pet_path(@pet)
+    else
+      render :edit
+    end
+
   end
 
   def destroy

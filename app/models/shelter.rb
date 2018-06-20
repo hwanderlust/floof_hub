@@ -5,6 +5,13 @@ class Shelter < ApplicationRecord
   has_many :employees, class_name: "User", foreign_key: "employer_id"
   accepts_nested_attributes_for :location
 
+
+  validates  :name, {presence: true, length: {minimum: 5, maximum: 70}}
+  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
+  validates :description, {length: {maximum: 500}}
+  validates :telephone_number, {length: {minimum: 10, maximum: 15}}
+  validates :website, {length: {minimum: 2, maximum: 255, messsage: "Link Invalid"}} 
+
   def build_location=(params)
     new_location = Location.new(params)
     if new_location.valid?

@@ -30,10 +30,11 @@ class UsersController < ApplicationController
     @user.update_location = location_params[:locations]
     if @user.valid?
       @user.save
+      redirect_to user_path(@user)
     else
       render :edit
     end
-    redirect_to user_path(@user)
+
   end
 
   def destroy

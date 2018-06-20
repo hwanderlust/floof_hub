@@ -1,3 +1,16 @@
+<% @shelter.errors.any? do %>
+  <h2>
+    <%= pluralize(@shelter.errors.count, "error") %>
+    prohibited this post from being saved:
+  </h2>
+
+  <div class="notice bg-warning"><ul>
+    <% @shelter.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul></div>
+<% end %>
+
 <%= form_for setup_user(@shelter) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
