@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   get 'locations/index'
   get 'locations/show'
 
-  get 'shelters/new'
-  post 'shelters/create'
-  get 'shelters/edit'
-  patch 'shelters/update'
-  delete 'shelters/destroy'
-  get 'shelters/index'
+  get 'shelters/index' => 'shelters#index', as: 'shelters'
+  get 'shelters/register' => 'shelters#new', as: 'register_shelter'
+  post 'shelters/home' => 'shelters#create'
+  get 'shelters/:id' => 'shelters#show', as: 'shelter'
+  get 'shelters/:id/edit' => 'shelters#edit'
+  patch 'shelters/:id' => 'shelters#update'
 
   get 'pets/new'
   post 'pets/create'

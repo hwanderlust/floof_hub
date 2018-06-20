@@ -1,2 +1,10 @@
-<h1>Shelters#create</h1>
-<p>Find me in app/views/shelters/create.html.erb</p>
+<h1><%= @shelter.name %></h1>
+<p>Address:</p>
+<p><%= @shelter.location.street_address %></p>
+<p><%= @shelter.location.city %></p>
+<p><%= @shelter.location.state %></p>
+
+<p>Telephone: <%= @shelter.telephone_number %></p>
+<p>Email: <%= @shelter.email_address %></p>
+<p>Website: <%= @shelter.website  %></p>
+<p>Description: <%= @shelter.description %></p>

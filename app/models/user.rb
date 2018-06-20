@@ -3,6 +3,8 @@ class User < ApplicationRecord
   belongs_to :location
   has_many :pets
   has_many :shelters, through: :pets
+  belongs_to :employer, class_name: "Shelter", optional: true
+  
   accepts_nested_attributes_for :location
 
   def build_location=(params)

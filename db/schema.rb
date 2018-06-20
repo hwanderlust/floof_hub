@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_154155) do
+ActiveRecord::Schema.define(version: 2018_06_20_155507) do
 
   create_table "locations", force: :cascade do |t|
     t.string "country"
@@ -39,11 +39,9 @@ ActiveRecord::Schema.define(version: 2018_06_19_154155) do
 
   create_table "shelters", force: :cascade do |t|
     t.string "name"
-    t.float "transaction_fee"
     t.integer "location_id"
     t.string "telephone_number"
     t.string "email_address"
-    t.string "street_address"
     t.text "description"
     t.string "website"
     t.datetime "created_at", null: false
@@ -63,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_154155) do
     t.boolean "shelter_employee", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employer_id"
   end
 
 end
