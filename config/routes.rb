@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   get 'register/user' => 'users#new', as: 'register_user'
-  get 'users/:id/edit' => 'users#edit'
   post 'users' => 'users#create'
   get 'users/:id' => 'users#show', as: 'user'
+  get 'users/:id/edit' => 'users#edit'
   patch 'users/:id' => 'users#update'
   delete 'users/destroy'
 

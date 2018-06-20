@@ -1,37 +1,3 @@
-<h1>Register Yourself meow~</h1>
-
-<%= form_tag users_path, method: "post" do %>
-
-  <%= label_tag "Name" %>
-  <%= text_field_tag "user[name]"%>
-  <%= label_tag "Age" %>
-  <%= number_field_tag "user[age]"%>
-  <%= label_tag "Dwelling Type" %>
-  <%= text_field_tag "user[dwelling_type]"%>
-  <%= label_tag "Number of Household Members" %>
-  <%= text_field_tag "user[household_members]"%>
-  <%= label_tag "Biography" %>
-  <%= text_area_tag "user[bio]"%>
-  <%= label_tag "Kids" %>
-  <%= check_box_tag "user[kids]"%>
-  <%= label_tag "Shelter Employee" %>
-  <%= check_box_tag "user[shelter_employee]"%>
-  <%= label_tag "Email Address" %>
-  <%= text_field_tag "user[email_address]"%>
-  <%= label_tag "Password" %>
-  <%= password_field_tag "user[password]"%>
-
-  <%= label_tag "street_address" %>
-  <%= text_field_tag "location[street_address]" %>
-  <%= label_tag "city" %>
-  <%= text_field_tag "location[city]" %>
-  <%= label_tag "state" %>
-  <%= text_field_tag "location[state]" %>
-  <%= label_tag "country" %>
-  <%= text_field_tag "location[country]" %>
-  <%= submit_tag %>
-<% end %>
-
 <h1>Users#edit</h1>
 
 <%= form_tag @user, method: "patch" do %>

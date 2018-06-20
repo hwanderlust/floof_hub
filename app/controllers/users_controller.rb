@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :destroy, :update]
+
   def new
     @user = User.new
     @location = Location.new
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.build_location = location_params
+    @user.build_location = location_params[:locations]
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
@@ -16,6 +17,18 @@ class UsersController < ApplicationController
     end
   end
 
+  # def login
+  #   byebug
+  #   @user.update(login_params)
+  #   redirect_to register_user_address
+  # end
+  #
+  # def address
+  #   byebug
+  #   @user.build_location = location_params
+  #   redirect_to user_path(@user)
+  # end
+
   def show
   end
 
@@ -23,15 +36,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    byebug
-    @t, @f = false
-    if @user.shelter_employee == true
-      @t = true
-    elsif @user.shelter_employee == false
-      @f = false
-    end 
+    # @t, @f = false
+    # if @user.shelter_employee == true
+    #   @t = true
+    # elsif @user.shelter_employee == false
+    #   @f = false
+    # end
     @user.update(user_params)
-    @user.build_location = location_params
+    @user.update_location = location_params[:locations]
     if @user.valid?
       @user.save
     else
@@ -51,12 +63,16 @@ class UsersController < ApplicationController
     end
 
     def location_params
-      params.require(:location).permit(:street_address, :city, :state, :country)
+      params.require(:user).permit(:locations => [:street_address, :city, :state, :country])
     end
 
     def user_params
       params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
       :bio, :kids, :email_address, :password, :shelter_employee)
     end
+
+    # def login_params
+    #   params.require(:user).permit(:email_address, :password)
+    # end
 
 end

@@ -1,33 +1,42 @@
 <h1>Register Yourself meow~</h1>
 
-<%= form_tag users_path, method: "post" do %>
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+    <br>
+    <%= f.label :dwelling_type %>
+    <%= f.text_field :dwelling_type %>
+    <br>
+    <%= f.label :household_members %>
+    <%= f.number_field :household_members %>
+    <br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  <br>
 
-  <%= label_tag "Name" %>
-  <%= text_field_tag "user[name]"%>
-  <%= label_tag "Age" %>
-  <%= number_field_tag "user[age]"%>
-  <%= label_tag "Dwelling Type" %>
-  <%= text_field_tag "user[dwelling_type]"%>
-  <%= label_tag "Number of Household Members" %>
-  <%= text_field_tag "user[household_members]"%>
-  <%= label_tag "Biography" %>
-  <%= text_area_tag "user[bio]"%>
-  <%= label_tag "Kids" %>
-  <%= check_box_tag "user[kids]"%>
-  <%= label_tag "Shelter Employee" %>
-  <%= check_box_tag "user[shelter_employee]"%>
-  <%= label_tag "Email Address" %>
-  <%= text_field_tag "user[email_address]"%>
-  <%= label_tag "Password" %>
-  <%= password_field_tag "user[password]"%>
+    <%= f.fields_for :locations do |loc| %>
+      <%= loc.label :street_address %>
+      <%= loc.text_field :street_address %>
+      <br>
+      <%= loc.label :city %>
+      <%= loc.text_field :city %>
+      <br>
+      <%= loc.label :state %>
+      <%= loc.text_field :state %>
+      <br>
+      <%= loc.label :country %>
+      <%= loc.text_field :country %>
+    <% end %><br>
 
-  <%= label_tag "street_address" %>
-  <%= text_field_tag "location[street_address]" %>
-  <%= label_tag "city" %>
-  <%= text_field_tag "location[city]" %>
-  <%= label_tag "state" %>
-  <%= text_field_tag "location[state]" %>
-  <%= label_tag "country" %>
-  <%= text_field_tag "location[country]" %>
-  <%= submit_tag %>
+      <%= f.label :email_address %>
+      <%= f.email_field :email_address %>
+      <br>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <br><br>
+
+  <%= f.submit %>
 <% end %>

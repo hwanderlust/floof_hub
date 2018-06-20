@@ -13,8 +13,12 @@ class User < ApplicationRecord
     self.location = new_location
   end
 
-  # def update_location=(params)
-  #   old_location = self.location
-  # end
+  def update_location=(params)
+    self.location.street_address = params[:street_address]
+    self.location.city = params[:city]
+    self.location.state = params[:state]
+    self.location.country = params[:country]
+    self.location
+  end
 
 end
