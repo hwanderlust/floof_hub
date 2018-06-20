@@ -1,4 +1,5 @@
-<%= form_for @user do |f| %>
+<%= form_for setup_user(@user) do |f| %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
@@ -16,32 +17,22 @@
   <br>
   <%= f.label :kids %>
   <%= f.check_box :kids %>
+
   <br>
-  <br>
-  <%= f.fields_for :locations do |loc| %>
-    <%= loc.label :street_address %>
-    <%= loc.text_field :street_address %>
-    <br>
-    <%= loc.label :city %>
-    <%= loc.text_field :city %>
-    <br>
-    <%= loc.label :state %>
-    <%= loc.text_field :state %>
-    <br>
-    <%= loc.label :country %>
-    <%= loc.text_field :country %>
-  <% end %>
-  <br><br>
   <%= f.label :email_address %>
   <%= f.email_field :email_address %>
   <br>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <br>
-  <br>
   <%= f.label :shelter_employee %>
   <%= f.check_box :shelter_employee %>
   <br>
-  <br>
+
+  <%= render "locationform" %>
+  
   <%= f.submit "Register Here"%>
+  <br>
+
+
 <% end %>

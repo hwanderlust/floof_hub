@@ -2,19 +2,16 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   get 'register/user' => 'users#new', as: 'register_user'
+  get 'users/:id/edit' => 'users#edit'
   post 'users' => 'users#create'
   get 'users/:id' => 'users#show', as: 'user'
-  get 'users/edit'
-  patch 'users/update'
+  patch 'users/:id' => 'users#update'
   delete 'users/destroy'
 
 
   get 'sessions/new'
   post 'sessions/create'
   delete 'sessions/destroy'
-
-
-
 
   get 'locations/index'
   get 'locations/show'
@@ -32,7 +29,7 @@ Rails.application.routes.draw do
   patch 'pets/update'
   delete 'pets/destroy'
   get 'pets/index'
-  
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

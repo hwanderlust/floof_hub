@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :destroy, :update]
   def new
     @user = User.new
+    @location = Location.new
   end
 
   def create
-    location = Location.make(all_params[:locations])
     @user = User.new(user_params)
-    @user.location = location
+    @user.build_location = location_params
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
@@ -16,30 +17,39 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    @user.update(user_params)
+    @user.build_location = location_params
+    if @user.valid?
+      @user.save
+    else
+      render :edit
+    end
+    redirect_to user_path(@user)
   end
 
   def destroy
-  end
-
-  def index
+    User.delete(@user)
   end
 
   private
 
-  def all_params
-    params.require(:user).permit!
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def user_params
-    params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
-    :bio, :kids, :email_address, :password, :shelter_employee)
-  end
+    def location_params
+      params.require(:location).permit(:street_address, :city, :state, :country)
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
+      :bio, :kids, :email_address, :password, :shelter_employee)
+    end
 
 end

@@ -5,4 +5,12 @@ class User < ApplicationRecord
   has_many :shelters, through: :pets
   accepts_nested_attributes_for :location
 
+  def build_location=(params)
+    new_location = Location.new(params)
+    if new_location.valid?
+      new_location.save
+    end
+    self.location = new_location
+  end
+
 end

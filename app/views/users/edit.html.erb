@@ -1,2 +1,33 @@
 <h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<%= form_tag @user, method: "patch" do %>
+
+  <%= label_tag "Name" %>
+  <%= text_field_tag "user[name]", @user.name %>
+  <%= label_tag "Age" %>
+  <%= number_field_tag "user[age]", @user.age %>
+  <%= label_tag "Dwelling Type" %>
+  <%= text_field_tag "user[dwelling_type]", @user.dwelling_type %>
+  <%= label_tag "Number of Household Members" %>
+  <%= text_field_tag "user[household_members]", @user.household_members %>
+  <%= label_tag "Biography" %>
+  <%= text_area_tag "user[bio]", @user.bio %>
+  <%= label_tag "Kids" %>
+  <%= check_box_tag "user[kids]" %>
+  <%= label_tag "Shelter Employee" %>
+  <%= check_box_tag "user[shelter_employee]"%>
+  <%= label_tag "Email Address" %>
+  <%= text_field_tag "user[email_address]", @user.email_address %>
+  <%= label_tag "Password" %>
+  <%= password_field_tag "user[password]"%>
+
+  <%= label_tag "street_address" %>
+  <%= text_field_tag "location[street_address]", @user.location.street_address %>
+  <%= label_tag "city" %>
+  <%= text_field_tag "location[city]", @user.location.city %>
+  <%= label_tag "state" %>
+  <%= text_field_tag "location[state]", @user.location.state %>
+  <%= label_tag "country" %>
+  <%= text_field_tag "location[country]", @user.location.country %>
+  <%= submit_tag %>
+<% end %>
