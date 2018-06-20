@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+var $myCarousel = $('#carouselExampleIndicators');
+
+// Initialize carousel
+$myCarousel.carousel();
