@@ -1,0 +1,20 @@
+<%= form_for @pet do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+    <br>
+    <%= f.label :gender %>
+    <%= f.text_field :gender %>
+    <br>
+    <%= f.label :household_members %>
+    <%= f.number_field :household_members %>
+    <br>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+    <%= f.label :kids, "Kids at home? " %>
+    Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
+    N/A <%= f.radio_button(:kids, false, :checked => (:kids == false)) %>
+    <br>
+  <br>

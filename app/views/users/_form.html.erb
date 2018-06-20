@@ -14,6 +14,14 @@
     <%= f.label :bio %>
     <%= f.text_area :bio %>
   <br>
+    <%= f.label :kids, "Kids at home? " %>
+    Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
+    N/A <%= f.radio_button(:kids, false, :checked => (:kids == false)) %>
+    <br>
+    <%= f.label :shelter_employee, "Representing a Shelter?" %>
+    Yes <%= f.radio_button(:shelter_employee, true, :checked => (:shelter_employee == true)) %>
+    N/A <%= f.radio_button(:shelter_employee, false, :checked => (:shelter_employee == false)) %>
+    <br>
 
     <%= f.fields_for :locations do |loc| %>
       <%= loc.label :street_address %>

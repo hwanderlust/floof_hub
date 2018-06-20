@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
-  
+
   def new
+    @pet = Pet.new
   end
 
   def create
