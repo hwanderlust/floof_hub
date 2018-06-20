@@ -22,12 +22,12 @@ Rails.application.routes.draw do
   delete 'shelters/destroy'
   get 'shelters/index'
 
-  get 'pets/new'
+  get 'list-pet' => 'pets#new', as: 'list_pet'
   post 'pets/create'
-  get 'pets/edit'
+  get 'edit-pet-details' => 'pets#edit', as: 'edit_pet'
   patch 'pets/update'
   delete 'pets/destroy'
-  get 'pets/index'
+  get 'all-pets' => 'pets/index', as: 'pets'
 
 
 
