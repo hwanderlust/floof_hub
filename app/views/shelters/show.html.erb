@@ -3,15 +3,16 @@
   <div class="row justify-content-center">
 
     <div class="col-5 my-3">
-        <h1><%= @shelter.name.capitalize %></h1>
+        <h1><%= @shelter.name.titleize %></h1>
         <%= image_tag @shelter.avatar.url(:medium) %><br><br>
-        <h4><%= link_to "Edit Info", edit_shelter_path(@shelter) %><h4>
+          <% if employee? %>
+          <h4><%= link_to "Edit Info", edit_shelter_path %><h4>
+          <h4><%= link_to "Add a Pet for Adoption Here", list_pet_path %></h4>
+          <% end %>
     </div>
 
     <div class="col-4 my-3">
 
-      <h1><%= @shelter.name %></h1>
-      <br>
       <h4>Description:</h4><h6><%= @shelter.description %></h6>
       <br>
       <h4>Address:</h4>
@@ -24,15 +25,10 @@
       <h4>Email:</h4><h6><%= @shelter.email_address %></h6><br>
       <h4>Website:</h4><h6><%= link_to @shelter.website, @shelter.website %></h6><br>
 
-
     </div>
 
     <div class="row justify-content-center">
       <div class="col-8 my-3">
-        <% if employee? %>
-          <%= link_to "Edit Profile", edit_shelter_path %><br><br>
-          <%= link_to "Add a Pet for Adoption Here", list_pet_path %>
-        <% end %>
       </div>
     </div>
 
