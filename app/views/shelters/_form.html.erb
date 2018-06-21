@@ -1,54 +1,61 @@
-<% @shelter.errors.any? do %>
-  <h2>
-    <%= pluralize(@shelter.errors.count, "error") %>
-    prohibited this post from being saved:
-  </h2>
+<div class="container">
 
-  <div class="notice bg-warning"><ul>
-    <% @shelter.errors.full_messages.each do |msg| %>
+  <div class="row justify-content-center">
+    <% @shelter.errors.any? do %>
+    <h2>
+      <%= pluralize(@shelter.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <div class="notice bg-warning"><ul>
+      <% @shelter.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
+      <% end %>
+    </ul></div>
     <% end %>
-  </ul></div>
-<% end %>
+  </div>
 
-<%= form_for setup_user(@shelter) do |f| %>
+  <div class="row justify-content-center">
+    <%= form_for setup_user(@shelter) do |f| %>
+      <h5><%= f.label :avatar, "Add a lovely picture here" %></h5>
+      <%= f.file_field :avatar, class: "btn btn-success" %>
+      <br><br>
 
-  <%= f.file_field :avatar %>
-  <br><br>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
-  <%= f.label :website %>
-  <%= f.url_field :website %>
-  <br>
-  <%= f.label :email_address %>
-  <%= f.email_field :email_address %>
-  <br>
-  <%= f.label :telephone_number %>
-  <%= f.telephone_field :telephone_number %>
-  <br>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <br>
+      <%= f.label :website %>
+      <%= f.url_field :website %>
+      <br>
+      <%= f.label :email_address %>
+      <%= f.email_field :email_address %>
+      <br>
+      <%= f.label :telephone_number %>
+      <%= f.telephone_field :telephone_number %>
+      <br>
 
 
-  <%= f.fields_for :locations do |loc| %>
-    <%= loc.label :street_address %>
-    <%= loc.text_field :street_address, value: @shelter.location.street_address %>
-    <br>
-    <%= loc.label :city %>
-    <%= loc.text_field :city, value: @shelter.location.city %>
-    <br>
-    <%= loc.label :state %>
-    <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state} %>
-    <br>
-    <%= loc.label :country %>
-    <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country} %>
-    <br>
-  <% end %><br>
+      <%= f.fields_for :locations do |loc| %>
+        <%= loc.label :street_address %>
+        <%= loc.text_field :street_address, value: @shelter.location.street_address %>
+        <br>
+        <%= loc.label :city %>
+        <%= loc.text_field :city, value: @shelter.location.city %>
+        <br>
+        <%= loc.label :state %>
+        <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state} %>
+        <br>
+        <%= loc.label :country %>
+        <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country} %>
+        <br>
+      <% end %><br>
 
-    <br><br>
+        <br>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.submit "Create Shelter", class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>
