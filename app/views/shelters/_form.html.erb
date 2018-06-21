@@ -37,10 +37,11 @@
       <%= loc.text_field :city, value: @shelter.location.city %>
       <br>
       <%= loc.label :state %>
-      <%= loc.text_field :state, value: @shelter.location.state %>
+      <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state} %>
       <br>
       <%= loc.label :country %>
-      <%= loc.text_field :country, value: @shelter.location.country %>
+      <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country} %>
+      <br>
     <% end %><br>
 
       <br><br>

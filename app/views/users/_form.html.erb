@@ -42,17 +42,17 @@
     <br>
 
     <%= f.fields_for :locations do |loc| %>
-      <%= loc.label :country %>
-      <%= loc.collection_select :country, Carmen::Country.all, :name, :name %>
-      <br>
-      <%= loc.label :state %>
-      <%= loc.collection_select :state, Location.states, :name, :code %>
+      <%= loc.label :street_address %>
+      <%= loc.text_field :street_address, value: @user.location.street_address %>
       <br>
       <%= loc.label :city %>
       <%= loc.text_field :city, value: @user.location.city %>
       <br>
-      <%= loc.label :street_address %>
-      <%= loc.text_field :street_address, value: @user.location.street_address %>
+      <%= loc.label :state %>
+      <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @user.location.state} %>
+      <br>
+      <%= loc.label :country %>
+      <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @user.location.country} %>
       <br>
     <% end %><br>
 
@@ -61,6 +61,11 @@
       <br>
       <%= f.label :password %>
       <%= f.password_field :password %>
+      <br><br>
+      <% if @user.shelter_employee && @user.shelter_employee == true  %>
+      <%= f.label :employer_id, "Employer: " %>
+      <%= f.collection_select :employer_id, @shelters, :id, :name, {:selected => @user.employer} %>
+      <% end %>
       <br><br>
 
   <%= f.submit %>

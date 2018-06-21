@@ -19,8 +19,12 @@
   <% if @user.shelter_employee == true %>
   <p>Shelter Employee:
     <%= "Yes" %>
+    <% if @user.employer_id != nil %>
+    <p>Shelter: <%= @user.employer.name %></p>
+    <% end %>
   </p>
   <% end %>
+
 
 
 <p>Household Members: <%= @user.household_members %></p>

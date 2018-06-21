@@ -33,4 +33,11 @@ class User < ApplicationRecord
     self.location
   end
 
+  def find_shelters
+    # Shelter.joins(:location).where(locations: {state: self.location.state})
+    Shelter.all.select do |shelter|
+      shelter.location.state == self.location.state
+    end
+  end
+
 end
