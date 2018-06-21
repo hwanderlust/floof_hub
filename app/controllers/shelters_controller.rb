@@ -1,7 +1,7 @@
 class SheltersController < ApplicationController
   before_action :set_shelter, only: [:show, :edit, :update]
   before_action :require_login, only: [:new, :create, :edit, :update]
-  before_action :employee?, only: [:new, :create, :edit, :update]
+  before_action :not_employee, only: [:new, :create, :edit, :update]
 
   def new
     @shelter = Shelter.new
