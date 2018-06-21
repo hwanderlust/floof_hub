@@ -23,11 +23,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @shelters = @user.find_shelters
   end
 
   def update
     @user.update(user_params)
     @user.update_location = location_params[:locations]
+
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
@@ -53,7 +55,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
-      :bio, :kids, :email_address, :password, :shelter_employee, :avatar)
+      :bio, :kids, :email_address, :password, :shelter_employee, :avatar, :employer_id)
     end
+
 
 end

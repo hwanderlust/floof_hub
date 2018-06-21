@@ -15,7 +15,7 @@
 
   <%= f.file_field :avatar %>
   <br><br>
-  
+
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br>
@@ -32,6 +32,7 @@
   <%= f.telephone_field :telephone_number %>
   <br>
 
+
   <%= f.fields_for :locations do |loc| %>
     <%= loc.label :street_address %>
     <%= loc.text_field :street_address, value: @shelter.location.street_address %>
@@ -40,12 +41,14 @@
     <%= loc.text_field :city, value: @shelter.location.city %>
     <br>
     <%= loc.label :state %>
-    <%= loc.text_field :state, value: @shelter.location.state %>
+    <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state} %>
     <br>
     <%= loc.label :country %>
-    <%= loc.text_field :country, value: @shelter.location.country %>
+    <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country} %>
+    <br>
   <% end %><br>
 
-  <br><br>
+    <br><br>
+
   <%= f.submit %>
 <% end %>

@@ -8,8 +8,8 @@ class Shelter < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  validates  :name, {presence: true, length: {minimum: 5, maximum: 70}}
-  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
+  validates  :name, {presence: true, length: {minimum: 5, maximum: 70}, uniqueness: true}
+  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64},uniqueness: true}
   validates :description, {length: {maximum: 500}}
   validates :telephone_number, {length: {minimum: 10, maximum: 15}}
   validates :website, {length: {minimum: 2, maximum: 255, messsage: "Link Invalid"}}
