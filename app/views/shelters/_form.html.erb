@@ -12,38 +12,40 @@
 <% end %>
 
 <%= form_for setup_user(@shelter) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br>
-    <%= f.label :website %>
-    <%= f.url_field :website %>
-    <br>
-    <%= f.label :email_address %>
-    <%= f.email_field :email_address %>
-    <br>
-    <%= f.label :telephone_number %>
-    <%= f.telephone_field :telephone_number %>
-    <br>
 
+  <%= f.file_field :avatar %>
+  <br><br>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :website %>
+  <%= f.url_field :website %>
+  <br>
+  <%= f.label :email_address %>
+  <%= f.email_field :email_address %>
+  <br>
+  <%= f.label :telephone_number %>
+  <%= f.telephone_field :telephone_number %>
+  <br>
 
-    <%= f.fields_for :locations do |loc| %>
-      <%= loc.label :street_address %>
-      <%= loc.text_field :street_address, value: @shelter.location.street_address %>
-      <br>
-      <%= loc.label :city %>
-      <%= loc.text_field :city, value: @shelter.location.city %>
-      <br>
-      <%= loc.label :state %>
-      <%= loc.text_field :state, value: @shelter.location.state %>
-      <br>
-      <%= loc.label :country %>
-      <%= loc.text_field :country, value: @shelter.location.country %>
-    <% end %><br>
+  <%= f.fields_for :locations do |loc| %>
+    <%= loc.label :street_address %>
+    <%= loc.text_field :street_address, value: @shelter.location.street_address %>
+    <br>
+    <%= loc.label :city %>
+    <%= loc.text_field :city, value: @shelter.location.city %>
+    <br>
+    <%= loc.label :state %>
+    <%= loc.text_field :state, value: @shelter.location.state %>
+    <br>
+    <%= loc.label :country %>
+    <%= loc.text_field :country, value: @shelter.location.country %>
+  <% end %><br>
 
-      <br><br>
-
+  <br><br>
   <%= f.submit %>
 <% end %>

@@ -5,6 +5,8 @@ class Shelter < ApplicationRecord
   has_many :employees, class_name: "User", foreign_key: "employer_id"
   accepts_nested_attributes_for :location
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   validates  :name, {presence: true, length: {minimum: 5, maximum: 70}}
   validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
@@ -27,5 +29,5 @@ class Shelter < ApplicationRecord
     self.location.country = params[:country]
     self.location
   end
-  
+
 end
