@@ -6,8 +6,8 @@ class Shelter < ApplicationRecord
   accepts_nested_attributes_for :location
 
 
-  validates  :name, {presence: true, length: {minimum: 5, maximum: 70}}
-  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
+  validates  :name, {presence: true, length: {minimum: 5, maximum: 70}, uniqueness: true}
+  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64},uniqueness: true}
   validates :description, {length: {maximum: 500}}
   validates :telephone_number, {length: {minimum: 10, maximum: 15}}
   validates :website, {length: {minimum: 2, maximum: 255, messsage: "Link Invalid"}}
@@ -27,5 +27,5 @@ class Shelter < ApplicationRecord
     self.location.country = params[:country]
     self.location
   end
-  
+
 end

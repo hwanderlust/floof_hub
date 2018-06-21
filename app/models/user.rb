@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates  :dwelling_type, {length: {maximum: 20}}
   validates  :household_members, {presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }}
   validates  :password, {length: {minimum: 6}, allow_nil: true}
-  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
+  validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}, uniqueness: true}
   validates :bio, {length: {maximum: 500}}
 
   def build_location=(params)
