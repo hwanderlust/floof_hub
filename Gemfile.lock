@@ -60,6 +60,8 @@ GEM
     byebug (10.0.2)
     carmen (1.1.1)
       activesupport (>= 3.0.0)
+    city-state (0.0.13)
+      rubyzip (~> 1.1)
     climate_control (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -152,6 +154,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ruby_dep (1.5.0)
+    rubyzip (1.2.1)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -207,6 +210,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   carmen (~> 1.0, >= 1.0.2)
+  city-state
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)

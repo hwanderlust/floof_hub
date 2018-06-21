@@ -1,5 +1,7 @@
 <%= form_for setup_user(@user), html: {multipart: true} do |f| %>
+
     <%= f.file_field :avatar %>
+
     <br><br>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -26,17 +28,18 @@
     <br>
 
     <%= f.fields_for :locations do |loc| %>
-      <%= loc.label :street_address %>
-      <%= loc.text_field :street_address, value: @user.location.street_address %>
+      <%= loc.label :country %>
+      <%= loc.collection_select :country, Carmen::Country.all, :name, :name %>
+      <br>
+      <%= loc.label :state %>
+      <%= loc.collection_select :state, Location.states, :name, :code %>
       <br>
       <%= loc.label :city %>
       <%= loc.text_field :city, value: @user.location.city %>
       <br>
-      <%= loc.label :state %>
-      <%= loc.text_field :state, value: @user.location.state %>
+      <%= loc.label :street_address %>
+      <%= loc.text_field :street_address, value: @user.location.street_address %>
       <br>
-      <%= loc.label :country %>
-      <%= loc.text_field :country, value: @user.location.country %>
     <% end %><br>
 
       <%= f.label :email_address %>
