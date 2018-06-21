@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'shelters' => 'shelters#create'
   get 'register/shelter' => 'shelters#new', as: 'register_shelter'
   get 'shelters/:id' => 'shelters#show', as: 'shelter'
-  get 'shelters/:id/edit' => 'shelters#edit'
+  get 'shelters/:id/edit' => 'shelters#edit', as: 'edit_shelter'
   patch 'shelters/:id' => 'shelters#update'
 
   get 'list-pet' => 'pets#new', as: 'list_pet'
