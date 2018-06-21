@@ -1,31 +1,59 @@
-<h1><%= @user.name %></h1>
+<%= stylesheet_link_tag "application" %>
 
-<%= image_tag @user.avatar.url(:thumb) %>
-
-<p>Address:</p>
-<p><%= @user.location.street_address %></p>
-<p><%= @user.location.city %></p>
-<p><%= @user.location.state %></p>
-<p>Dwelling Type: <%= @user.dwelling_type%></p>
-<br>
-<p>Age: <%= @user.age %></p>
-
-  <% if @user.kids == true %>
-  <p>Kids:
-    <%= "Yes" %>
-  </p>
-  <% end %>
-
-  <% if @user.shelter_employee == true %>
-  <p>Shelter Employee:
-    <%= "Yes" %>
-  </p>
-  <% end %>
-
-
-<p>Household Members: <%= @user.household_members %></p>
-<p>Bio: <%= @user.bio %></p>
-<p>Email: <%= @user.email_address %></p>
-
-<br><br>
-<%= link_to "Edit Profile", edit_user_path(@user) %>
+<div class="container">
+  <div class="row justify-content-start">
+<!-- FIRST COLUMN AREA FOR USER NAME AND PICTURE -->
+    <div class="col-5 my-3">
+        <h1><%= @user.name.capitalize %></h1>
+        <%= image_tag @user.avatar.url(:medium) %><br><br>
+        <h4><%= link_to "Edit Profile", edit_user_path(@user) %><h4>
+    </div>
+<!-- MIDDLE COLUMN FOR USER DETAILS -->
+    <div class="col-5 my-3">
+        <h4 >Dwelling Type: </h4>
+        <h6><%= @user.dwelling_type%></h6>
+        <br>
+        <h4>Address:</h4>
+        <h6>
+          <%= @user.location.street_address %><br>
+          <%= @user.location.city.capitalize %>, <%= @user.location.state %>
+        </h6>
+        <br>
+        <h4>Age:</h4>
+        <h6>
+          <%= @user.age %></p>
+        </h6>
+        <% if @user.kids == true %>
+        <h4>Kids:</h4>
+        <h6>
+          <%= "Yes" %>
+        </h6>
+        <% end %>
+        <% if @user.shelter_employee == true %>
+        <h4>Shelter Employee:</h4>
+        <h6>
+          <%= "Yes" %>
+        </h6>
+        <% end %>
+        <br>
+        <h4>Household Members:</h4>
+        <h6>
+          <%= @user.household_members %>
+        </h6>
+        <br>
+        <h4>Bio:</h4>
+        <h6>
+          <%= @user.bio %>
+        </h6>
+        <br>
+        <h4>E-mail:</h4>
+        <h6>
+          <%= @user.email_address %>
+        </h6>
+    </div>
+<!-- RIGHT COLUMN FOR LINKS FOR OTHER ACTIONS -->
+    <div class="col-2 my-3">
+    </div>
+<!-- END OF CONTAINER -->
+  </div>
+</div>
