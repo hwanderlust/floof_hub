@@ -10,7 +10,7 @@ class Shelter < ApplicationRecord
   validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64}}
   validates :description, {length: {maximum: 500}}
   validates :telephone_number, {length: {minimum: 10, maximum: 15}}
-  validates :website, {length: {minimum: 2, maximum: 255, messsage: "Link Invalid"}} 
+  validates :website, {length: {minimum: 2, maximum: 255, messsage: "Link Invalid"}}
 
   def build_location=(params)
     new_location = Location.new(params)
@@ -27,4 +27,5 @@ class Shelter < ApplicationRecord
     self.location.country = params[:country]
     self.location
   end
+  
 end

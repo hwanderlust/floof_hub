@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#home'
+  get 'about' => 'welcome#about'
+  get 'contact' => 'welcome#contact'
 
   get 'register/user' => 'users#new', as: 'register_user'
   post 'users' => 'users#create'
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'shelters' => 'shelters#index', as: 'shelters'
   post 'shelters' => 'shelters#create'
-  get 'shelters/register' => 'shelters#new', as: 'register_shelter'
+  get 'register/shelter' => 'shelters#new', as: 'register_shelter'
   get 'shelters/:id' => 'shelters#show', as: 'shelter'
   get 'shelters/:id/edit' => 'shelters#edit'
   patch 'shelters/:id' => 'shelters#update'
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
   patch 'pets/:id' => 'pets#update'
   delete 'pets/destroy'
 
-
+  # get 'filter_states_by_country' => 'location#filter_states_by_country'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

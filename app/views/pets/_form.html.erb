@@ -11,8 +11,10 @@
   </ul></div>
 <% end %>
 
+<%= form_for @pet, html: { multipart: true } do |f| %>
 
-<%= form_for @pet do |f| %>
+  <%= f.file_field :avatar %>
+  <br><br>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br>
