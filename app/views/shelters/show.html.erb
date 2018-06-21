@@ -1,11 +1,30 @@
-<h1><%= @shelter.name %></h1>
+<div class="container">
 
-<p>Address:</p>
-<p><%= @shelter.location.street_address %></p>
-<p><%= @shelter.location.city %></p>
-<p><%= @shelter.location.state %></p>
+  <div class="row justify-content-center">
+    <div class="col-4 my-3">
 
-<p>Telephone: <%= @shelter.telephone_number %></p>
-<p>Email: <%= @shelter.email_address %></p>
-<p>Website: <%= @shelter.website  %></p>
-<p>Description: <%= @shelter.description %></p>
+      <h1><%= @shelter.name %></h1>
+      <br>
+      <h4>Description:</h4><h6><%= @shelter.description %></h6>
+      <br>
+      <h4>Address:</h4>
+      <h6>
+        <%= @shelter.location.street_address %><br>
+        <%= @shelter.location.city %>, <%= @shelter.location.state %>
+      </h6>
+      <br>
+      <h4>Telephone:</h4><h6><%= @shelter.telephone_number %></h6><br>
+      <h4>Email:</h4><h6><%= @shelter.email_address %></h6><br>
+      <h4>Website:</h4><h6><%= @shelter.website %></h6><br>
+
+
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-8 my-3">
+        <%= link_to "Add a Pet for Adoption Here", list_pet_path %>
+      </div>
+    </div>
+
+  </div>
+</div>
