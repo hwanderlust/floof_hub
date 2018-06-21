@@ -29,10 +29,12 @@
         </h6>
         <% end %>
         <% if @user.shelter_employee == true %>
-        <h4>Shelter Employee:</h4>
-        <h6>
-          <%= "Yes" %>
-        </h6>
+          <% if @user.employer_id != nil %>
+            <h4>Employed by:</h4>
+            <h6>
+              <%= @user.employer.name %>
+            </h6>
+          <% end %>
         <% end %>
         <br>
         <h4>Household Members:</h4>

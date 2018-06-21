@@ -62,11 +62,12 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
       <br><br>
+
       <% if @user.shelter_employee && @user.shelter_employee == true  %>
-      <%= f.label :employer_id, "Employer: " %>
-      <%= f.collection_select :employer_id, @shelters, :id, :name, {:selected => @user.employer} %>
+        <%= f.label :employer_id, "Employer: " %>
+        <%= f.collection_select :employer_id, @shelters, :id, :name, {:selected => @user.employer} %>
       <% end %>
-      <br><br>
+      <br>
 
   <%= f.submit %>
 <% end %>
