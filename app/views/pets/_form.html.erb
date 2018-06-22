@@ -16,7 +16,7 @@
 
   <div class="row justify-content-center">
 
-    <%= form_for @pet, html: { multipart: true } do |f| %>
+    <%= form_for @pet, html: { multipart: true, style: "margin:0; padding:0; width: 500px;", :class => "form-horizontal center"} do |f| %>
 
       <% if @pet.avatar.exists? %>
         <%= image_tag @pet.avatar.url(:thumb) %><br/>
@@ -27,33 +27,33 @@
       <%= f.check_box :delete_avatar %>Delete Image<br/>
 
       <br><br>
-      <%= f.label :name, class:"heading" %>
-      <%= f.text_field :name %>
+      <%= f.label :name, class:"heading col-md-4" %>
+      <%= f.text_field :name, class: "col-md-6" %>
       <br>
-      <%= f.label :age, class:"heading" %>
-      <%= f.number_field :age %>
+      <%= f.label :age, class:"heading col-md-4" %>
+      <%= f.number_field :age, class: "col-md-6" %>
       <br>
-      <%= f.label :gender, class:"heading" %>
+      <%= f.label :gender, class:"heading col-md-4" %>
       Male <%= f.radio_button(:gender, "M", :checked => (@pet.gender == "M")) %>
       Female <%= f.radio_button(:gender, "F", :checked => (@pet.gender == "F")) %>
       <br>
-      <%= f.label :bio, class:"heading" %>
-      <%= f.text_area :bio %>
+      <%= f.label :bio, class:"heading col-md-4" %>
+      <%= f.text_area :bio, class: "col-md-6" %>
       <br>
-      <%= f.label :pet_type, class:"heading" %>
-      <%= f.text_field :pet_type %>
+      <%= f.label :pet_type, class:"heading col-md-4" %>
+      <%= f.text_field :pet_type, class: "col-md-6" %>
       <br>
-      <%= f.label :breed, class:"heading" %>
-      <%= f.text_field :breed %>
+      <%= f.label :breed, class:"heading col-md-4" %>
+      <%= f.text_field :breed, class: "col-md-6" %>
       <br>
-      <%= f.label :temperament, class:"heading" %>
-      <%= f.text_field :temperament %>
+      <%= f.label :temperament, class:"heading col-md-4" %>
+      <%= f.text_field :temperament, class: "col-md-6" %>
       <br>
-      <%= f.label :single_pet, "Loner pet?", class:"heading" %>
+      <%= f.label :single_pet, "Loner pet?", class:"heading col-md-4" %>
       Yes <%= f.radio_button(:single_pet, true, :checked => (@pet.single_pet == true)) %>
       No <%= f.radio_button(:single_pet, false, :checked => (@pet.single_pet == false)) %>
       <br>
-      <%= f.label :family_friendly, class:"heading" %>
+      <%= f.label :family_friendly, class:"heading col-md-4" %>
       Yes <%= f.radio_button(:family_friendly, true, :checked => (@pet.family_friendly == true)) %>
       No <%= f.radio_button(:family_friendly, false, :checked => (@pet.family_friendly == false)) %>
 
