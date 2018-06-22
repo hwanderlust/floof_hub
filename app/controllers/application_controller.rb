@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :logged_in?, :current_user, :employee?, :require_login, :not_employee, :shelter_employee?
-  before_action :logged_in?, :not_found
+  before_action :logged_in?
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found if :not_found
 
   def current_user
     @user = (User.find_by(id: session[:user_id]) || User.new)
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
 
 end
