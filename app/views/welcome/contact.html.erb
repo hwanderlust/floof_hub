@@ -1,18 +1,28 @@
+<%= stylesheet_link_tag "application" %>
+
 <div class="container col-md-10">
 
   <h1>Contact Us</h1>
-  <div class="">
-    <p>Paul Ly</p>
-    <p>Email: paul.ly@flatironschool.com</p>
-    <br>
-    <p>Razibul Ahmed</p>
-    <p>Email: razibul.ahmed@flatironschool.com</p>
-    <br>
-    <h3><p>Want to mail us goodies?</p></h3>
-    <%= "Access Labs" %><br>
-    <%= "ATTN: Striaght Out Of Terminal" %><br>
-    <%= "81 Prospect Street" %><br>
-    <%= "Brooklyn, NY 11201"  %>
+  <br><br>
+  <div class="row justify-content-around">
+    <div class="col-md-4 alert alert-info">
+      <h3 class="heading text-success">Paul Ly</h3>
+      <p>Email: paul.ly@flatironschool.com</p>
+      <br>
+      <h3 class="heading text-success">Razibul Ahmed</h3>
+      <p>Email: razibul.ahmed@flatironschool.com</p>
+    </div>
+    <div class="col-md-4 alert alert-dark">
+      <h3><p>Want to mail us goodies?</p></h3>
+      <h5 class="text-success"><%= "Access Labs" %></h5>
+      <%= "ATTN: Striaght Out Of Terminal" %><br>
+      <%= "81 Prospect Street" %><br>
+      <%= "Brooklyn, NY 11201"  %>
+    </div>
   </div>
-  
+
+  <div class="">
+    <br>
+  </div>
+
 </div>
