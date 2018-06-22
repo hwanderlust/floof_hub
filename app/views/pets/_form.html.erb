@@ -24,29 +24,33 @@
 
       <h5><%= f.label :avatar, "Add a lovely picture of the cutie here" %></h5>
       <%= f.file_field :avatar, class: "btn btn-outline-info" %><br>
-      <%= f.check_box :delete_avatar %>Delete Image<br/>
+      <% if @pet.avatar.exists? %>
+        <%= f.check_box :delete_avatar %>Delete Image<br/>
+      <% end %>
 
       <br><br>
-      <%= f.label :name, class:"heading col-md-4" %>
+
+      <h6 class="heading">Pet Info</h6>
+      <%= f.label :name, class:"col-md-4" %>
       <%= f.text_field :name, class: "col-md-6" %>
       <br>
-      <%= f.label :age, class:"heading col-md-4" %>
+      <%= f.label :age, class:"col-md-4" %>
       <%= f.number_field :age, class: "col-md-6" %>
       <br>
-      <%= f.label :gender, class:"heading col-md-4" %>
+      <%= f.label :gender, class:"col-md-4" %>
       Male <%= f.radio_button(:gender, "M", :checked => (@pet.gender == "M")) %>
       Female <%= f.radio_button(:gender, "F", :checked => (@pet.gender == "F")) %>
       <br>
-      <%= f.label :bio, class:"heading col-md-4" %>
+      <%= f.label :bio, class:"col-md-4" %>
       <%= f.text_area :bio, class: "col-md-6" %>
       <br>
-      <%= f.label :pet_type, class:"heading col-md-4" %>
+      <%= f.label :pet_type, class:"col-md-4" %>
       <%= f.text_field :pet_type, class: "col-md-6" %>
       <br>
-      <%= f.label :breed, class:"heading col-md-4" %>
+      <%= f.label :breed, class:"col-md-4" %>
       <%= f.text_field :breed, class: "col-md-6" %>
       <br>
-      <%= f.label :temperament, class:"heading col-md-4" %>
+      <%= f.label :temperament, class:"col-md-4" %>
       <%= f.text_field :temperament, class: "col-md-6" %>
       <br>
       <%= f.label :single_pet, "Loner pet?", class:"heading col-md-4" %>

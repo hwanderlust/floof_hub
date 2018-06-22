@@ -27,21 +27,25 @@
       <h5><%= f.label :avatar, "Add a lovely picture here" %></h5>
       <%= f.file_field :avatar, class: "btn btn-outline-info" %>
       <br>
-      <%= f.check_box :delete_avatar %>Delete Image<br/><br>
+      <% if @shelter.avatar.exists? %>
+        <%= f.check_box :delete_avatar %>Delete Image<br/><br>
+      <% end %>
+      <br>
 
-      <%= f.label :name, class: "heading col-md-4" %>
+      <h6 class="heading">Info</h6>
+      <%= f.label :name, class: "col-md-4" %>
       <%= f.text_field :name, class: "col-md-6" %>
       <br>
-      <%= f.label :description, class: "heading col-md-4" %>
+      <%= f.label :description, class: "col-md-4" %>
       <%= f.text_area :description, class: "col-md-6" %>
       <br>
-      <%= f.label :website, class: "heading col-md-4" %>
+      <%= f.label :website, class: "col-md-4" %>
       <%= f.url_field :website, class: "col-md-6" %>
       <br>
-      <%= f.label :email_address, class: "heading col-md-4" %>
+      <%= f.label :email_address, class: "col-md-4" %>
       <%= f.email_field :email_address, class: "col-md-6" %>
       <br>
-      <%= f.label :telephone_number, class: "heading col-md-4" %>
+      <%= f.label :telephone_number, class: "col-md-4" %>
       <%= f.telephone_field :telephone_number, class: "col-md-6" %>
       <br><br>
 
