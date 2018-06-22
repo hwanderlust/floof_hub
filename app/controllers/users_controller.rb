@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # user = user.try(:authenticate, params[:sessions][:password_confirmation])
     @user.build_location = location_params[:locations]
     if @user.valid?
       @user.save
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :age, :dwelling_type, :household_members, :bio, :kids, :email_address, :password, :shelter_employee, :avatar, :employer_id, :delete_avatar)
+      params.require(:user).permit(:name, :age, :dwelling_type, :household_members, :bio, :kids, :email_address, :password, :shelter_employee, :avatar, :employer_id, :delete_avatar, :password_confirmation)
     end
 
 
