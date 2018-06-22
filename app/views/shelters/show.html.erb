@@ -6,8 +6,8 @@
         <h1><%= @shelter.name.titleize %></h1>
         <%= image_tag @shelter.avatar.url(:medium) %><br><br>
           <% if shelter_employee?(@shelter) %>
-          <h4><%= link_to "Edit Info", edit_shelter_path %><h4>
-          <h4><%= link_to "Add a Pet for Adoption Here", list_pet_path %></h4>
+            <h4><%= link_to "Edit Info", edit_shelter_path %><h4>
+            <h4><%= link_to "Add a Pet for Adoption Here", list_pet_path %></h4>
           <% end %>
     </div>
 
