@@ -22,12 +22,14 @@
 <div class="container" style="max-width: 1000px">
   <div class="row">
     <% @pets.each do |pet| %>
-    <div class="col">
-      <a href="<%= pet_path(pet) %>">
-        <%= image_tag pet.avatar.url{:medium} %><br>
-      </a>
-      <%= link_to pet.name, pet_path(pet), class:"btn btn-link" %>
-    </div>
+      <% if pet.adoption_status == false %>
+        <div class="col">
+          <a href="<%= pet_path(pet) %>">
+            <%= image_tag pet.avatar.url{:medium} %><br>
+          </a>
+          <%= link_to pet.name, pet_path(pet), class:"btn btn-link" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
