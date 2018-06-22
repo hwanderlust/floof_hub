@@ -18,8 +18,13 @@
 
     <%= form_for @pet, html: { multipart: true } do |f| %>
 
+      <% if @pet.avatar.exists? %>
+        <%= image_tag @pet.avatar.url(:thumb) %><br/>
+      <% end %>
+
       <h5><%= f.label :avatar, "Add a lovely picture of the cutie here" %></h5>
       <%= f.file_field :avatar, class: "btn btn-success" %>
+      <%= f.check_box :delete_avatar %>Delete Image<br/>
 
       <br><br>
       <%= f.label :name %>

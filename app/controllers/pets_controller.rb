@@ -22,6 +22,10 @@ class PetsController < ApplicationController
   def update
     @pet.update(pet_params)
     if @pet.valid?
+      if pet_params[:delete_avatar] == 1
+        @pet.avatar.destroy
+        @pet.avatar.clear
+      end
       @pet.save
       redirect_to pet_path(@pet)
     else
@@ -47,6 +51,6 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :pet_type, :breed, :age, :temperament, :bio, :single_pet, :family_friendly, :gender, :shelter_id, :avatar)
+    params.require(:pet).permit(:name, :pet_type, :breed, :age, :temperament, :bio, :single_pet, :family_friendly, :gender, :shelter_id, :avatar, :delete_avatar)
   end
 end
