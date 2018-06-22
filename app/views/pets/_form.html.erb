@@ -47,7 +47,7 @@
       <%= f.text_area :bio, class: "col-md-6" %>
       <br>
       <%= f.label :pet_type, class:"col-md-4" %>
-      <%= f.text_field :pet_type, class: "col-md-6" %>
+      <%= f.select :pet_type, ["Cat", "Dog", "Snake", "Bird", "Fish", "Other"], {}, class:"col-md-6" %>
       <br>
       <%= f.label :breed, class:"col-md-4" %>
       <%= f.text_field :breed, class: "col-md-6" %>
