@@ -1,5 +1,5 @@
 class SheltersController < ApplicationController
-  before_action :set_shelter, only: [:show, :edit, :update]
+  before_action :set_shelter, only: [:show, :edit, :update, :shelters_pets]
   before_action :require_login, only: [:new, :create, :edit, :update]
   before_action :not_employee, only: [:new, :create, :edit, :update]
 
@@ -55,6 +55,10 @@ class SheltersController < ApplicationController
       flash.now[:message] = "Unfortunately, there aren't any shelters in your state currently :( Please visit another time!"
     end
     render :index
+  end
+
+  def shelters_pets
+    @pets = @shelter.pets
   end
 
 

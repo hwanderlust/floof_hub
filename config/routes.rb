@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'shelters/:id' => 'shelters#show', as: 'shelter'
   get 'shelters/:id/edit' => 'shelters#edit', as: 'edit_shelter'
   patch 'shelters/:id' => 'shelters#update'
+  get 'shelters/:id/pets' => 'shelters#show_pets', as: 'shelters_pets'
 
   get 'list-pet' => 'pets#new', as: 'list_pet'
   get 'all-pets' => 'pets#index', as: 'pets'
