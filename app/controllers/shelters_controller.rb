@@ -22,6 +22,11 @@ class SheltersController < ApplicationController
   end
 
   def edit
+    if shelter_employee?(@shelter)
+      render :edit
+    else
+      redirect_to shelter_path(@shelter)
+    end
   end
 
   def update

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :logged_in?, :current_user, :employee?, :require_login, :not_employee
+  helper_method :logged_in?, :current_user, :employee?, :require_login, :not_employee, :shelter_employee?
   before_action :logged_in?
 
   def current_user
@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
 
   def employee?
     !!current_user.shelter_employee
+  end
+
+  def shelter_employee?(shelter)
+    if employee?
+      !!(current_user.employer_id == shelter.id)
+    end
   end
 
   def not_employee

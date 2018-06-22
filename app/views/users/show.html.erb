@@ -32,7 +32,7 @@
           <% if @user.employer_id != nil %>
             <h4>Employed by:</h4>
             <h6>
-              <%= @user.employer.name %>
+              <%= link_to @user.employer.name, shelter_path(@user.employer) %>
             </h6>
           <% end %>
         <% end %>
