@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # user = user.try(:authenticate, params[:sessions][:password_confirmation])
     @user.build_location = location_params[:locations]
     if @user.valid?
       @user.save

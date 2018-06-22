@@ -18,7 +18,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <%= form_for setup_user(@shelter) do |f| %>
+    <%= form_for setup_user(@shelter), html: {style: "margin:0; padding:0; width: 500px;", :class => "form-horizontal center"} do |f| %>
 
     <% if @shelter.avatar.exists? %>
       <%= image_tag @shelter.avatar.url(:medium) %><br/><br>
@@ -29,35 +29,35 @@
       <br>
       <%= f.check_box :delete_avatar %>Delete Image<br/><br>
 
-      <%= f.label :name, class: "heading" %>
-      <%= f.text_field :name %>
+      <%= f.label :name, class: "heading col-md-4" %>
+      <%= f.text_field :name, class: "col-md-6" %>
       <br>
-      <%= f.label :description, class: "heading" %>
-      <%= f.text_area :description %>
+      <%= f.label :description, class: "heading col-md-4" %>
+      <%= f.text_area :description, class: "col-md-6" %>
       <br>
-      <%= f.label :website, class: "heading" %>
-      <%= f.url_field :website %>
+      <%= f.label :website, class: "heading col-md-4" %>
+      <%= f.url_field :website, class: "col-md-6" %>
       <br>
-      <%= f.label :email_address, class: "heading" %>
-      <%= f.email_field :email_address %>
+      <%= f.label :email_address, class: "heading col-md-4" %>
+      <%= f.email_field :email_address, class: "col-md-6" %>
       <br>
-      <%= f.label :telephone_number, class: "heading" %>
-      <%= f.telephone_field :telephone_number %>
+      <%= f.label :telephone_number, class: "heading col-md-4" %>
+      <%= f.telephone_field :telephone_number, class: "col-md-6" %>
       <br><br>
 
       <h6 class="heading">Address</h6>
       <%= f.fields_for :locations do |loc| %>
-        <%= loc.label :street_address %>
-        <%= loc.text_field :street_address, value: @shelter.location.street_address %>
+        <%= loc.label :street_address, class: "col-md-4" %>
+        <%= loc.text_field :street_address, class: "col-md-6", value: @shelter.location.street_address %>
         <br>
-        <%= loc.label :city %>
-        <%= loc.text_field :city, value: @shelter.location.city %>
+        <%= loc.label :city, class: "col-md-4" %>
+        <%= loc.text_field :city, class: "col-md-6", value: @shelter.location.city %>
         <br>
-        <%= loc.label :state %>
-        <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state} %>
+        <%= loc.label :state, class: "col-md-4" %>
+        <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @shelter.location.state}, class: "col-md-6" %>
         <br>
-        <%= loc.label :country %>
-        <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country} %>
+        <%= loc.label :country, class: "col-md-4" %>
+        <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @shelter.location.country}, class: "col-md-6" %>
         <br>
       <% end %><br>
 
