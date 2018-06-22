@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   get 'locations/index'
   get 'locations/show'
 
-  get 'shelters' => 'shelters#index', as: 'shelters'
-  post 'shelters' => 'shelters#create'
+  get 'all-shelters' => 'shelters#index', as: 'shelters'
+  get 'shelters/search' => 'shelters#search', as: 'search_shelters'
+  post 'all-shelters' => 'shelters#create'
   get 'register/shelter' => 'shelters#new', as: 'register_shelter'
   get 'shelters/:id' => 'shelters#show', as: 'shelter'
   get 'shelters/:id/edit' => 'shelters#edit', as: 'edit_shelter'
   patch 'shelters/:id' => 'shelters#update'
+  get 'shelters/:id/pets' => 'shelters#show_pets', as: 'shelters_pets'
 
   get 'list-pet' => 'pets#new', as: 'list_pet'
   get 'all-pets' => 'pets#index', as: 'pets'
@@ -35,8 +37,6 @@ Rails.application.routes.draw do
   delete 'pets/destroy'
 
   get 'meaty-matt' => 'welcome#matt'
-
-  # get 'filter_states_by_country' => 'location#filter_states_by_country'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

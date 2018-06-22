@@ -1,25 +1,24 @@
 <%= stylesheet_link_tag "application" %>
 
-<div class="container">
+<div class="container" style="max-width:1000px;">
 
   <div class="row justify-content-center">
-    <% @user.errors.any? do %>
-    <h2>
-      <%= pluralize(@user.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
 
-    <div class="notice bg-warning"><ul>
-      <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul></div>
+    <% @user.errors.any? do %>
+
+      <div class="alert alert-warning">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
   </div>
 
   <div class="row justify-content-center">
 
-    <%= form_for setup_user(@user), html: {multipart: true} do |f| %>
+    <%= form_for setup_user(@user), html: {multipart: true, style:"margin:0;padding:0;width:500px;", :class => "form-horizontal center"} do |f| %>
 
       <% if @user.avatar.exists? %>
         <%= image_tag @user.avatar.url(:medium) %><br/><br>
@@ -27,61 +26,68 @@
 
         <h5><%= f.label :avatar, "Add a lovely picture of yourself here" %></h5>
         <%= f.file_field :avatar, class: "btn btn-outline-info" %><br><br>
-        <%= f.check_box :delete_avatar %>Delete Image<br/>
+        <% if @user.avatar.exists? %>
+          <%= f.check_box :delete_avatar %>Delete Image<br/>
+        <% end %>
+        <br>
 
-        <br><br>
-        <%= f.label :name, class:"heading" %>
-        <%= f.text_field :name %>
+        <h6 class="heading">Personal Info</h6>
+          <%= f.label :name, class:"col-md-4" %>
+          <%= f.text_field :name, class:"col-md-6" %>
         <br>
-        <%= f.label :age, class:"heading" %>
-        <%= f.number_field :age, min: 16, max: 122 %>
+        <%= f.label :age, class:"col-md-4" %>
+        <%= f.number_field :age, min: 16, max: 122, class:"col-md-6" %>
         <br>
-        <%= f.label :dwelling_type, class:"heading" %>
-        <%= f.text_field :dwelling_type %>
+        <%= f.label :dwelling_type, class:"col-md-4" %>
+        <%= f.text_field :dwelling_type, class:"col-md-6" %>
         <br>
-        <%= f.label :household_members, class:"heading" %>
-        <%= f.number_field :household_members, min: 1 %>
+        <%= f.label :household_members, class:"col-md-4" %>
+        <%= f.number_field :household_members, min: 1, class:"col-md-6" %>
         <br>
-        <%= f.label :bio, class:"heading" %>
-        <%= f.text_area :bio %>
+        <%= f.label :bio, class:"col-md-4" %>
+        <%= f.text_area :bio, class:"col-md-6" %>
         <br>
-        <%= f.label :kids, "Kids at home?", class:"heading" %>
+        <%= f.label :kids, "Kids at home?", class:"col-md-4" %>
         Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
         N/A <%= f.radio_button(:kids, false, :checked => (:kids == false)) %>
         <br>
-        <%= f.label :shelter_employee, "Representing a Shelter?", class:"heading" %>
+        <%= f.label :shelter_employee, "Representing a Shelter?", class:"col-md-4" %>
         Yes <%= f.radio_button(:shelter_employee, true, :checked => (:shelter_employee == true)) %>
         N/A <%= f.radio_button(:shelter_employee, false, :checked => (:shelter_employee == false)) %>
         <br><br>
 
         <h6 class="heading">Address</h6>
         <%= f.fields_for :locations do |loc| %>
-          <%= loc.label :street_address %>
-          <%= loc.text_field :street_address, value: @user.location.street_address %>
+          <%= loc.label :street_address, class: "col-md-4" %>
+          <%= loc.text_field :street_address, class:"col-md-6", value: @user.location.street_address %>
           <br>
-          <%= loc.label :city %>
-          <%= loc.text_field :city, value: @user.location.city %>
+          <%= loc.label :city, class:"col-md-4" %>
+          <%= loc.text_field :city, class:"col-md-6", value: @user.location.city %>
           <br>
-          <%= loc.label :state %>
-          <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @user.location.state} %>
+          <%= loc.label :state, class:"col-md-4" %>
+          <%= loc.collection_select :state, Location.states, :name, :code, {:selected => @user.location.state}, class:"col-md-6" %>
           <br>
-          <%= loc.label :country %>
-          <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @user.location.country} %>
+          <%= loc.label :country, class:"col-md-4" %>
+          <%= loc.collection_select :country, Carmen::Country.all, :name, :name, {:selected => @user.location.country}, class:"col-md-6" %>
           <br>
         <% end %><br>
 
-          <%= f.label :email_address, class:"heading" %>
-          <%= f.email_field :email_address %>
+          <h6 class="heading">Login Details</h6>
+          <%= f.label :email_address, class:"col-md-4" %>
+          <%= f.email_field :email_address, class:"col-md-6" %>
           <br>
-          <%= f.label :password, class:"heading" %>
-          <%= f.password_field :password %>
+          <%= f.label :password, class:"col-md-4" %>
+          <%= f.password_field :password, class:"col-md-6" %>
+          <br>
+          <%= f.label "Password", class:"col-md-4" %>
+          <%= f.password_field :password_confirmation, class:"col-md-6" %>
           <br><br>
 
           <% if @user.shelter_employee && @user.shelter_employee == true  %>
             <%= f.label :employer_id, "Employer: ", class:"heading" %>
             <%= f.collection_select :employer_id, @shelters, :id, :name, {:selected => @user.employer} %>
           <% end %>
-          <br><br>
+          <br>
 
       <%= f.submit "Click Here To Create Yourself", class: "btn btn-outline-success" %>
     <% end %>
