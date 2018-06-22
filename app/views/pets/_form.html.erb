@@ -56,9 +56,7 @@
       <%= f.label :family_friendly, class:"heading" %>
       Yes <%= f.radio_button(:family_friendly, true, :checked => (@pet.family_friendly == true)) %>
       No <%= f.radio_button(:family_friendly, false, :checked => (@pet.family_friendly == false)) %>
-      <br>
-      <%= f.label :shelter_id, "Shelter", class:"heading" %>
-      <%= f.collection_select :shelter_id, Shelter.all, :id, :name %>
+
       <br><br>
 
       <%= f.submit "Post the Cutie here", class: "btn btn-outline-success" %>
