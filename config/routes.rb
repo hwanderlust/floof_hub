@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   patch 'pets/:id' => 'pets#update'
   delete 'pets/destroy'
 
+  get 'meaty-matt' => 'welcome#matt'
+
   # get 'filter_states_by_country' => 'location#filter_states_by_country'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
