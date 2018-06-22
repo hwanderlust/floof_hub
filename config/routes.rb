@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   get 'list-pet' => 'pets#new', as: 'list_pet'
   get 'all-pets' => 'pets#index', as: 'pets'
+  get 'pets/search' => 'pets#search', as: 'search'
   post 'all-pets' => 'pets#create'
   get 'pets/:id' => 'pets#show', as: 'pet'
   get 'pets/:id/edit' => 'pets#edit', as: 'edit_pet'

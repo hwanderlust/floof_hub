@@ -50,6 +50,15 @@ class PetsController < ApplicationController
   def show
   end
 
+  def search
+    state = params[:search].titleize
+    @pets = Pet.select{|p| p.shelter.location.state == state}
+    if @pets.empty?
+      flash.now[:message] = "Unfortunately, there aren't any pets in your state currently :( Please visit another time!"
+    end
+    render :index
+  end
+
   private
 
   def set_pet
