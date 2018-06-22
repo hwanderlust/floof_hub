@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :destroy, :update]
+  before_action :set_user, only: [:show, :edit, :destroy, :update, :show_pets]
   before_action :require_login, only: [:edit, :update, :destroy, :show]
 
   def new
@@ -45,6 +45,11 @@ class UsersController < ApplicationController
 
   def destroy
     User.delete(@user)
+  end
+
+  def show_pets
+    @pets = @user.pets
+    render :pets
   end
 
   private

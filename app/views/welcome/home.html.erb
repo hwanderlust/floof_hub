@@ -1,4 +1,4 @@
-<h1 style="text-align: center; position: relative; top:-30px;">Welcome to FloofHub</h1>
+<h1 style="font-size: 5em; color:white; text-align: center; position: relative; top:-30px; background: url('https://stmed.net/sites/default/files/stripes-wallpapers-25316-9071215.jpg')">Welcome to FloofHub</h1>
 
 <header>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -40,6 +40,7 @@
 
 <!-- Page Content -->
 <div class="container">
+  <br><br>
   <h2 style="margin-top: 50px;">Featured Shelters</h2>
   <!-- Marketing Icons Section -->
   <div class="row">
@@ -84,7 +85,7 @@
     </div>
   </div>
   <!-- /.row -->
-
+  <br><br>
   <!-- Portfolio Section -->
   <h2>Featured Pets For Adoption</h2>
 
@@ -104,60 +105,31 @@
     </div>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-60">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="<%= pet_path(@pets[1]) %>">
+          <%= image_tag @pets[1].avatar.url(:medium), class: "card-img-top" %>
+        </a>
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#">Pet Name</a>
+            <a href="<%= pet_path(@pets[1]) %>"><%= @pets[1].name %></a>
           </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="card-text"><%= @pets[1].bio %></p>
         </div>
       </div>
     </div>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-60">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="<%= pet_path(@pets.last) %>">
+          <%= image_tag @pets.last.avatar.url(:medium), class: "card-img-top" %>
+        </a>
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#">Pet Name</a>
+            <a href="<%= pet_path(@pets.last) %>"><%= @pets.last.name %></a>
           </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p class="card-text"><%= @pets.last.bio %></p>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-50">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Pet Name</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-50">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Pet Name</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
-      <div class="card h-50">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="#">Pet Name</a>
-          </h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- /.row -->
 
   <!-- Features Section -->
@@ -187,9 +159,11 @@
   <!-- Call to Action Section -->
   <div class="row mb-4">
     <div class="col-md-8">
+      <br><br><br><br>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
     </div>
     <div class="col-md-4">
+      <br><br><br><br>
       <a class="btn btn-lg btn-danger btn-block" href="#">Become a Pet Owner Today!</a>
     </div>
   </div>

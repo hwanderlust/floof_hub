@@ -54,6 +54,22 @@
     </div>
 <!-- RIGHT COLUMN FOR LINKS FOR OTHER ACTIONS -->
     <div class="col-2 my-3">
+      <% if !@user.pets.empty? %>
+        <h1>Pets YOU Adopted!!! YAY!</h1><br>
+        <% if @user.pets.count > 3 %>
+          <% pets = @user.pets.last(3) %>
+        <% else %>
+          <% pets = @user.pets %>
+        <% end %>
+        <% pets.each do |pet| %>
+          <div class="">
+            <%= image_tag pet.avatar.url(:thumb) %><br><br>
+          </div>
+        <% end %>
+
+        <%= link_to "See More Here", users_pets_path, class:"btn btn-danger" %>
+        
+      <% end %>
     </div>
 <!-- END OF CONTAINER -->
   </div>

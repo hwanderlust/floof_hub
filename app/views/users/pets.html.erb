@@ -1,0 +1,17 @@
+<!-- PETS FOR THIS USER -->
+
+<div class="container justify-content-center">
+
+  <h1>Cuties You've ADOPTED!!!</h1><br><br>
+  <div class="row">
+    <% @pets.each do |pet| %>
+    <div class="col">
+      <a href="<%= pet_path(pet) %>">
+        <%= image_tag pet.avatar.url(:medium) %><br>
+      </a>
+      <%= link_to pet.name, pet_path(pet) %>
+    </div><br>
+    <% end %>
+  </div>
+
+</div>
