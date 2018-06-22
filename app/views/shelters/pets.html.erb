@@ -5,12 +5,14 @@
   <h1>Cuties Waiting For You at <%= @shelter.name %> in <%= @shelter.location.state %>!!</h1><br><br>
   <div class="row">
     <% @pets.each do |pet| %>
-    <div class="col">
-      <a href="<%= pet_path(pet) %>">
-        <%= image_tag pet.avatar.url(:medium) %><br>
-      </a>
-      <%= link_to pet.name, pet_path(pet) %>
-    </div><br>
+      <% if pet.adoption_status == false %>
+        <div class="col">
+          <a href="<%= pet_path(pet) %>">
+            <%= image_tag pet.avatar.url(:medium) %><br>
+          </a>
+          <%= link_to pet.name, pet_path(pet) %>
+        </div><br>
+      <% end %>
     <% end %>
   </div>
 
