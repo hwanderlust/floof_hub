@@ -9,7 +9,11 @@
         <% if current_user.employer_id == @pet.shelter_id%>
           <h4><%= link_to "Edit Profile", edit_pet_path(@pet) %><h4>
         <% end %>
-        <a href="#" class="btn btn-danger">Adopt This CUTIE HERE!</a>
+        <% if logged_in? && @pet.adoption_status == false %>
+        <h4><%= link_to "Adopt This CUTIE HERE!", adopt_pet_path(@pet), method: :get %></h4>
+        <% elsif @pet.adoption_status == true%>
+        <h4 class="alert alert-info"><%= "This pet has been adopted!!" %></h4>
+        <% end %>
     </div>
 <!-- MIDDLE COLUMN FOR PET DETAILS -->
     <div class="col-4 my-3">

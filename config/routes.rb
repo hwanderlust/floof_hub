@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'pets/:id' => 'pets#show', as: 'pet'
   get 'pets/:id/edit' => 'pets#edit', as: 'edit_pet'
   patch 'pets/:id' => 'pets#update'
+  get 'pets/:id/adopt' => 'pets#adopt', as: 'adopt_pet'
   delete 'pets/destroy'
 
   get 'meaty-matt' => 'welcome#matt'

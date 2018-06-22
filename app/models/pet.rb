@@ -21,4 +21,11 @@ class Pet < ApplicationRecord
   def delete_avatar=(value)
     @delete_avatar  = !value.to_i.zero?
   end
+
+  def adopt_pet(user)
+    
+    self.adoption_status = true
+    self.user = user
+    self.save
+  end
 end

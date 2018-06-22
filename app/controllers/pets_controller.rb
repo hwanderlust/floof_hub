@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_pet, only: [:edit, :update, :destroy, :show]
+  before_action :set_pet, only: [:edit, :update, :destroy, :show, :adopt]
 
   def new
     @pet = Pet.new
@@ -57,6 +57,13 @@ class PetsController < ApplicationController
       flash.now[:message] = "Unfortunately, there aren't any pets in your state currently :( Please visit another time!"
     end
     render :index
+  end
+
+  def adopt
+    
+    user = current_user
+    @pet.adopt_pet(user)
+    redirect_to @pet
   end
 
   private
