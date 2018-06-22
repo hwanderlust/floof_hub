@@ -1,6 +1,6 @@
 class SheltersController < ApplicationController
   before_action :set_shelter, only: [:show, :edit, :update, :show_pets]
-  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :require_login, only: [:new, :create, :edit, :update, :show_pets]
   before_action :not_employee, only: [:new, :create, :edit, :update]
 
   def new

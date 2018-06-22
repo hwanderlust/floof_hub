@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       @user = user
-      redirect_to root_path
+      redirect_to welcome_path(@user)
     else
       flash[:notice] = "Invalid email/password"
       redirect_to login_path

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :destroy, :update, :show_pets]
-  before_action :require_login, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:show, :edit, :destroy, :update, :show_pets, :welcome]
+  before_action :require_login, only: [:edit, :update, :destroy, :show, :show_pets, :welcome]
 
   def new
     @user = User.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to welcome_path(@user)
     else
       render :new
     end
@@ -50,6 +50,9 @@ class UsersController < ApplicationController
   def show_pets
     @pets = @user.pets
     render :pets
+  end
+
+  def welcome
   end
 
   private
