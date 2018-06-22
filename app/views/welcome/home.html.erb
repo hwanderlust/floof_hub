@@ -1,3 +1,5 @@
+<h1 style="text-align: center">Welcome to FloofHub</h1>
+
 <header>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -41,16 +43,17 @@
 
 <!-- Page Content -->
 <div class="container">
-
-  <h1 class="my-4">Welcome to FloofHub</h1>
-
+  <h2>Shelters</h2>
   <!-- Marketing Icons Section -->
   <div class="row">
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+      <div class="card h-50">
+        <h4 class="card-header"><%= @shelters.first.name %></h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          <div style="margin-left:2%">
+            <%= image_tag @shelters.first.avatar.url(:medium) %>
+          </div>
+          <p class="card-text"><%= @shelters.first.description %></p>
         </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Learn More</a>
@@ -58,10 +61,13 @@
       </div>
     </div>
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+      <div class="card h-50">
+        <h4 class="card-header"><%= @shelters[1].name %></h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+          <div style="margin-left:2%">
+            <%= image_tag @shelters[1].avatar.url(:medium) %>
+          </div>
+          <p class="card-text"><%= @shelters[1].description %></p>
         </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Learn More</a>
@@ -69,10 +75,13 @@
       </div>
     </div>
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+      <div class="card h-50">
+        <h4 class="card-header"><%= @shelters.last.name %></h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          <div style="margin-left:2%">
+            <%= image_tag @shelters.last.avatar.url(:medium) %>
+          </div>
+          <p class="card-text"><%= @shelters.last.description %></p>
         </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Learn More</a>
