@@ -17,6 +17,11 @@ class PetsController < ApplicationController
   end
 
   def edit
+    if shelter_employee?(@pet.shelter)
+      render :edit
+    else
+      redirect_to pet_path(@pet)
+    end
   end
 
   def update
