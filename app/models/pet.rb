@@ -23,9 +23,9 @@ class Pet < ApplicationRecord
   end
 
   def adopt_pet(user)
-    
     self.adoption_status = true
     self.user = user
     self.save
   end
+  
 end
