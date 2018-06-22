@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email_address: params[:sessions][:email_address])
     user = user.try(:authenticate, params[:sessions][:password])
+    user = user.try(:authenticate, params[:sessions][:password_confirmation])
     if user
       session[:user_id] = user.id
       @user = user
@@ -23,6 +24,6 @@ class SessionsController < ApplicationController
 
   private
   def session_params
-    params.require(:sessions).permit(:email_address, :password)
+    params.require(:sessions).permit(:email_address, :password, :password_confirmation)
   end
 end
