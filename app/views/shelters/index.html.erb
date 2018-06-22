@@ -18,17 +18,17 @@
   </div>
 
   <br>
-  <ul>
-  </ul>
 
   <div class="row">
     <% @shelters.each do |shelter| %>
       <div class="col">
-        <%= image_tag shelter.avatar.url(:medium) %><br>
+        <a href="<%= shelter_path(shelter) %>">
+          <%= image_tag shelter.avatar.url(:medium) %><br>
+        </a>
         <%= link_to shelter.name, shelter_path(shelter) %>
       </div>
     <% end %>
   </div>
-  
+
 
 </div>

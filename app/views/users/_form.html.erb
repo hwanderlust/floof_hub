@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "application" %>
+
 <div class="container">
 
   <div class="row justify-content-center">
@@ -20,38 +22,39 @@
     <%= form_for setup_user(@user), html: {multipart: true} do |f| %>
 
       <% if @user.avatar.exists? %>
-      <%= image_tag @user.avatar.url(:thumb) %><br/>
+        <%= image_tag @user.avatar.url(:medium) %><br/><br>
       <% end %>
 
         <h5><%= f.label :avatar, "Add a lovely picture of yourself here" %></h5>
-        <%= f.file_field :avatar, class: "btn btn-success" %><br>
+        <%= f.file_field :avatar, class: "btn btn-outline-info" %><br><br>
         <%= f.check_box :delete_avatar %>Delete Image<br/>
 
-        <br><br><br>
-        <%= f.label :name %>
+        <br><br>
+        <%= f.label :name, class:"heading" %>
         <%= f.text_field :name %>
         <br>
-        <%= f.label :age %>
+        <%= f.label :age, class:"heading" %>
         <%= f.number_field :age, min: 16, max: 122 %>
         <br>
-        <%= f.label :dwelling_type %>
+        <%= f.label :dwelling_type, class:"heading" %>
         <%= f.text_field :dwelling_type %>
         <br>
-        <%= f.label :household_members %>
+        <%= f.label :household_members, class:"heading" %>
         <%= f.number_field :household_members, min: 1 %>
         <br>
-        <%= f.label :bio %>
+        <%= f.label :bio, class:"heading" %>
         <%= f.text_area :bio %>
         <br>
-        <%= f.label :kids, "Kids at home? " %>
+        <%= f.label :kids, "Kids at home?", class:"heading" %>
         Yes <%= f.radio_button(:kids, true, :checked => (:kids == true)) %>
         N/A <%= f.radio_button(:kids, false, :checked => (:kids == false)) %>
         <br>
-        <%= f.label :shelter_employee, "Representing a Shelter?" %>
+        <%= f.label :shelter_employee, "Representing a Shelter?", class:"heading" %>
         Yes <%= f.radio_button(:shelter_employee, true, :checked => (:shelter_employee == true)) %>
         N/A <%= f.radio_button(:shelter_employee, false, :checked => (:shelter_employee == false)) %>
-        <br>
+        <br><br>
 
+        <h6 class="heading">Address</h6>
         <%= f.fields_for :locations do |loc| %>
           <%= loc.label :street_address %>
           <%= loc.text_field :street_address, value: @user.location.street_address %>
@@ -67,20 +70,20 @@
           <br>
         <% end %><br>
 
-          <%= f.label :email_address %>
+          <%= f.label :email_address, class:"heading" %>
           <%= f.email_field :email_address %>
           <br>
-          <%= f.label :password %>
+          <%= f.label :password, class:"heading" %>
           <%= f.password_field :password %>
           <br><br>
 
           <% if @user.shelter_employee && @user.shelter_employee == true  %>
-            <%= f.label :employer_id, "Employer: " %>
+            <%= f.label :employer_id, "Employer: ", class:"heading" %>
             <%= f.collection_select :employer_id, @shelters, :id, :name, {:selected => @user.employer} %>
           <% end %>
-          <br>
+          <br><br>
 
-      <%= f.submit "Click Here To Create Yourself", class: "btn btn-info" %>
+      <%= f.submit "Click Here To Create Yourself", class: "btn btn-outline-success" %>
     <% end %>
 
   </div>

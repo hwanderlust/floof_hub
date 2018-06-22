@@ -33,6 +33,10 @@ class SheltersController < ApplicationController
     @shelter.update(shelter_params)
     @shelter.update_location = location_params[:locations]
     if @shelter.valid?
+      if shelter_params[:delete_avatar] == 1
+        @shelter.avatar.destroy
+        @shelter.avatar.clear
+      end
       @shelter.save
     else
       render :edit
@@ -56,6 +60,6 @@ class SheltersController < ApplicationController
     end
 
     def shelter_params
-      params.require(:shelter).permit(:name, :telephone_number, :email_address, :description, :website, :avatar)
+      params.require(:shelter).permit(:name, :telephone_number, :email_address, :description, :website, :avatar, :delete_avatar)
     end
 end

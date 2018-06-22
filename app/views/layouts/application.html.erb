@@ -27,6 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
+        <%= link_to "Home", root_path, class: "navbar-brand" %>        
         <% if logged_in? %>
           <%= link_to "Profile", user_path(current_user), class: "navbar-brand" %>
           <%= link_to "Logout", logout_path, :method => :delete, class: "navbar-brand" %>

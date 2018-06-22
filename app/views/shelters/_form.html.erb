@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "application" %>
+
 <div class="container">
 
   <div class="row justify-content-center">
@@ -17,27 +19,33 @@
 
   <div class="row justify-content-center">
     <%= form_for setup_user(@shelter) do |f| %>
-      <h5><%= f.label :avatar, "Add a lovely picture here" %></h5>
-      <%= f.file_field :avatar, class: "btn btn-success" %>
-      <br><br>
 
-      <%= f.label :name %>
+    <% if @shelter.avatar.exists? %>
+      <%= image_tag @shelter.avatar.url(:medium) %><br/><br>
+    <% end %>
+
+      <h5><%= f.label :avatar, "Add a lovely picture here" %></h5>
+      <%= f.file_field :avatar, class: "btn btn-outline-info" %>
+      <br>
+      <%= f.check_box :delete_avatar %>Delete Image<br/><br>
+
+      <%= f.label :name, class: "heading" %>
       <%= f.text_field :name %>
       <br>
-      <%= f.label :description %>
+      <%= f.label :description, class: "heading" %>
       <%= f.text_area :description %>
       <br>
-      <%= f.label :website %>
+      <%= f.label :website, class: "heading" %>
       <%= f.url_field :website %>
       <br>
-      <%= f.label :email_address %>
+      <%= f.label :email_address, class: "heading" %>
       <%= f.email_field :email_address %>
       <br>
-      <%= f.label :telephone_number %>
+      <%= f.label :telephone_number, class: "heading" %>
       <%= f.telephone_field :telephone_number %>
-      <br>
+      <br><br>
 
-
+      <h6 class="heading">Address</h6>
       <%= f.fields_for :locations do |loc| %>
         <%= loc.label :street_address %>
         <%= loc.text_field :street_address, value: @shelter.location.street_address %>
@@ -55,7 +63,7 @@
 
         <br>
 
-      <%= f.submit "Create Shelter", class: "btn btn-info" %>
+      <%= f.submit "Create Shelter", class: "btn btn-outline-success" %>
     <% end %>
   </div>
 </div>

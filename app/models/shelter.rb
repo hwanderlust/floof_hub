@@ -8,6 +8,8 @@ class Shelter < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+  before_validation { avatar.clear if @delete_avatar }
+
   validates  :name, {presence: true, length: {minimum: 5, maximum: 70}, uniqueness: true}
   validates  :email_address, {presence: true, length: {minimum: 6, maximum: 64},uniqueness: true}
   validates :description, {length: {maximum: 500}}
@@ -28,6 +30,14 @@ class Shelter < ApplicationRecord
     self.location.state = params[:state]
     self.location.country = params[:country]
     self.location
+  end
+
+  def delete_avatar
+    @delete_avatar ||= false
+  end
+
+  def delete_avatar=(value)
+    @delete_avatar  = !value.to_i.zero?
   end
 
 end
