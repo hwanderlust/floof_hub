@@ -40,6 +40,7 @@ class User < ApplicationRecord
     Shelter.all.select do |shelter|
       shelter.location.state == self.location.state
     end
+  end 
 
   def delete_avatar
     @delete_avatar ||= false
