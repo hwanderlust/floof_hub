@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     @user.update(user_params)
     @user.update_location = location_params[:locations]
     if @user.valid?
+      if user_params[:delete_avatar] == 1
+        @user.avatar.destroy
+        @user.avatar.clear
+      end
       @user.save
       redirect_to user_path(@user)
     else
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :age, :dwelling_type, :household_members,
-      :bio, :kids, :email_address, :password, :shelter_employee, :avatar)
+      :bio, :kids, :email_address, :password, :shelter_employee, :avatar, :delete_avatar)
     end
 
 end
