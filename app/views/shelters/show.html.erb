@@ -11,7 +11,7 @@
           <% end %>
     </div>
 
-    <div class="col-5 my-3">
+    <div class="col-4 my-3">
 
       <h4>Description:</h4><h6><%= @shelter.description %></h6>
       <br>
@@ -27,16 +27,21 @@
 
     </div>
 
-      <div class="col-2 my-3">
-        <h1>Pets for Adoption</h1>
-        <% recent_pets = @shelter.pets.last(3) %>
-        <% recent_pets.each do |pet| %>
-          <div class="">
-            <%= image_tag pet.avatar.url(:thumb) %><br><br>
-          </div>
-        <% end %>
-        <%= link_to "See More Here", shelters_pets_path, class:"btn btn-danger" %>
-      </div>
-
+      <div class="col-3 my-3">
+        <% recent_pets = @shelter.pets.select{|pet| pet.adoption_status == false}.last(3) %>
+        <h1>Pets for Adoption</h1><br>
+        <% if !recent_pets.empty? %>
+          <% recent_pets.each do |pet| %>
+            <div class="">
+              <%= image_tag pet.avatar.url(:thumb) %><br><br>
+            </div>
+          <% end %>
+          <%= link_to "See More Here", shelters_pets_path, class:"btn btn-danger" %>
+        </div>
+      <% else %>
+        <h6 class="alert alert-dark">Please check back later.</h6><br>
+        <p class="alert alert-success">Enjoy this in the meantime!</p>
+        <img src="https://media.giphy.com/media/VzLR6oO6MzybC/giphy.gif" width="300px" alt="">
+      <% end %>
   </div>
 </div>
