@@ -1,19 +1,20 @@
 <div class="container">
 
+  <% if flash[:message] %>
+    <div class="alert alert-warning">
+      <%= flash[:message] %>
+    </div>
+  <% end %>
+
   <div class="row justify-content-center my-3">
     <div class="col-md">
       <h1>Shelters</h1>
     </div>
     <div class="justify-content-end">
-      <%= form_tag shelters_path, method: :get, class: "form-inline my-2 my-lg-2" do %>
-      <%= text_field_tag(
-        :search,
-        params[:search],
-        placeholder: "Search",
-        class: "form-control mr-sm-2"
-          ) %>
-          <%= button_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
-          <% end %>
+      <%= form_tag search_shelters_path, method: :get, class: "form-inline my-2 my-lg-2" do %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
     </div>
   </div>
 

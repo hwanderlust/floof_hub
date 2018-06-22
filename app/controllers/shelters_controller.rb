@@ -48,6 +48,15 @@ class SheltersController < ApplicationController
     @shelters = Shelter.all
   end
 
+  def search
+    state = params[:search].titleize
+    @shelters = Shelter.select{|s| s.location.state == state}
+    if @shelters.empty?
+      flash.now[:message] = "Unfortunately, there aren't any shelters in your state currently :( Please visit another time!"
+    end
+    render :index
+  end
+
 
   private
 
